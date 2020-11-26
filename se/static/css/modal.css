@@ -1,0 +1,157 @@
+/* The Modal (background) */
+.modal-requirement {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1040; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content-requirement {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.modal-close-requirement {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.modal-close-requirement:hover,
+.modal-close-requirement:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+/*View Requirement*/
+/* The Modal (background) */
+.modal-view-requirement {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1040; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content-view-requirement {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.modal-close-view-requirement {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.modal-close-view-requirement:hover,
+.modal-close-view-requirement:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+/*View Pending/Completed Donations*/
+/* The Modal (background) */
+.modal-view-donation {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1040; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content-view-donation {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.modal-close-view-donation {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.modal-close-view-donation:hover,
+.modal-close-view-donation:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+/*Donate Equipment*/
+/* The Modal (background) */
+.modal-donate {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1040; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content-donate {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.modal-close-donate {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.modal-close-donate:hover,
+.modal-close-donate:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
