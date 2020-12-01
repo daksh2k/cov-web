@@ -1,0 +1,11 @@
+{% extends 'admin/base.html' %}
+{% load static %}
+
+{% block branding %}
+ <h1>
+  <img src="{% static 'img/logofinal1.png' %}" class="logo brand_img" width="150px" alt="CovidCare Donations">
+ </h1>
+{% endblock %}
+{% block extrastyle %}
+ <link rel="stylesheet" href="{% static 'css/admin.css' %}">
+{% endblock %}

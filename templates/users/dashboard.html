@@ -1,0 +1,149 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<!-- Current NGO Requirements -->
+<section class="container">
+  <!-- <div class="container"> -->
+  <div class="row showcase-current-requirements">
+    <div class="col-lg-12 text-center">
+      <br>
+      <h2 class="mb-4 mx-auto text-center">Current NGO Requirements</h2>
+      <p>These equipment are currently in demand by the NGOs.</p>
+      <hr class="my-4">
+    </div>
+  </div>
+  <!-- </div> -->
+  <div class="container showcase-current-requirements">
+    <div class="row">
+      <div class="col-md-6 col-lg-3 text-center">
+        <div class="card" id="donation-card">
+          <div class="card-body"><img id="donation-pic" src="assets/img/equipments/handsanitizer.JPG">
+            <h4 class="card-title product-title">Hand Sanitizer</h4>
+            <hr>
+            <button class="btn btn-primary btn-requirement-details" id="btn-requirement-details" type="button"><i
+                class="fa fa-eye"></i> View Details</button>
+            <button class="btn btn-primary btn-donate-equipment" id="btn-donate-equipment" type="button"><i
+                class="fa fa-cart-plus"></i>Donate</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3 text-center">
+        <div class="card" id="donation-card">
+          <div class="card-body"><img id="donation-pic" src="assets/img/equipments/surgicalmask.jpg">
+            <h4 class="card-title product-title">Surgical Mask</h4>
+            <hr>
+            <button class="btn btn-primary btn-requirement-details" id="btn-requirement-details" type="button"><i
+                class="fa fa-eye"></i> View Details</button>
+            <button class="btn btn-primary btn-donate-equipment" id="btn-donate-equipment" type="button"><i
+                class="fa fa-cart-plus"></i>Donate</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3 text-center">
+        <div class="card" id="donation-card">
+          <div class="card-body"><img id="donation-pic" src="assets/img/equipments/plasticfaceshield.jpg">
+            <h4 class="card-title product-title">Plastic Face Shield</h4>
+            <hr>
+            <button class="btn btn-primary btn-requirement-details" id="btn-requirement-details" type="button"><i
+                class="fa fa-eye"></i> View Details</button>
+            <button class="btn btn-primary btn-donate-equipment" id="btn-donate-equipment" type="button"><i
+                class="fa fa-cart-plus"></i>Donate</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3 text-center">
+        <div class="card" id="donation-card">
+          <div class="card-body"><img id="donation-pic" src="assets/img/equipments/n95mask.jpg">
+            <h4 class="card-title product-title">N95 Mask</h4>
+            <hr>
+            <button class="btn btn-primary btn-requirement-details" id="btn-requirement-details" type="button"><i
+                class="fa fa-eye"></i> View Details</button>
+            <button class="btn btn-primary btn-donate-equipment" id="btn-donate-equipment" type="button"><i
+                class="fa fa-cart-plus"></i>Donate</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<br>
+
+
+<!-- Current Requirements Modal -->
+<div id="ViewRequirementModal" class="modal-view-requirement">
+
+  <!-- Modal content -->
+  <div class="modal-content-view-requirement">
+    <span class="modal-close-view-requirement">&times;</span>
+    <div class="container bg-light">
+      <div class="row bg-light">
+        <div class="col-md-5 mx-auto">
+          <div class="card-body">
+            <img id="donation-pic" src="assets/img/equipments/n95mask.jpg">
+            <h4 class="card-title product-title text-center">N95 Mask</h4>
+            <hr>
+            <div><strong>NGO: </strong>Prakash</div>
+            <div><strong>Quantity: </strong>5</div>
+            <div><strong>Description: </strong>excellent quality washcble 100 times minimum 1 filter</div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Donate Equipment Modal -->
+<div id="DonateEquipmentModal" class="modal-donate">
+
+  <!-- Modal content -->
+  <div class="modal-content-donate">
+    <span class="modal-close-donate">&times;</span>
+    <div class="container bg-light">
+      <div class="row bg-light">
+        <div class="col-md-6 mx-auto">
+          <div class="card">
+            <div class="card-header bg-primary text-white">
+              <h4>
+                <i class="fas fa-user-plus"></i> Enter Equipment Details</h4>
+            </div>
+            <div class="card-body">
+              <form action="index.html">
+                <div class="form-group">
+                  <label for="name">Equipment Name</label>
+                  <input type="text" name="name" class="form-control" required>
+                </div>
+                <div class="form-group">
+                  <label for="ngo_name">Donated To:</label>
+                  <input type="text" value="Prakash NGO" name="ngo_name" class="form-control" disabled="">
+                </div>
+                <div class="form-group">
+                  <label for="quantity">Quantity</label>
+                  <input type="number" name="quantity" class="form-control" required>
+                </div>
+                <div class="form-group">
+                  <label for="description">Description</label>
+                  <input type="text" name="description" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label for="image">Image</label>
+                  <input type="file" name="image" class="form-control" required>
+                </div>
+                <input type="submit" value="Register" class="btn btn-secondary btn-block">
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script type="text/javascript" src="assets/js/viewRequirementModal.js"></script>
+<script type="text/javascript" src="assets/js/donateEquipmentModal.js"></script>
+
+{% endblock %}

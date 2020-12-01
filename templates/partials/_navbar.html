@@ -32,16 +32,87 @@
             </ul>
 
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item mr-3">
-                    <a class="nav-link" href="{% url 'index' %}">
-                        <i class="fas fa-user-plus"></i> User Sign In</a>
-                </li>
-                <li class="nav-item mr-3">
-                    <a class="nav-link" href="{% url 'index' %}">
-                        <i class="fas fa-sign-in-alt"></i>
+                {% if user.is_authenticated %}
+                    {% if user.ngos.id > 0 %}
+                        <li 
+                        {% if 'ngos/dashboard' in request.path %}
+                                class="nav-item active mr-3"
+                            {% else %}
+                                class="nav-item mr-3"
+                            {% endif %}
+                        >
+                                <a class="nav-link" href="{% url 'ngodashboard' %}">
+                                Welcome {{ user.username }} (Dashboard)</a>
+                        </li>
+                        <li
+                        {% if 'ngos/requirements' in request.path %}
+                                class="nav-item active mr-3"
+                            {% else %}
+                                class="nav-item mr-3"
+                            {% endif %}
+                        >
+                                <a class="nav-link" href="{% url 'ngorequirements' %}">
+                                Requirements</a>
+                        </li>
+                        
+                    {% else %}
+                        {% if user.users.id > 0 %}
+                            <li 
+                            {% if 'users/dashboard' in request.path %}
+                                    class="nav-item active mr-3"
+                                {% else %}
+                                    class="nav-item mr-3"
+                                {% endif %}
+                            >
+                                    <a class="nav-link" href="{% url 'userdashboard' %}">
+                                    Welcome {{ user.username }} (Dashboard)</a>
+                            </li>
+                            <li
+                            {% if 'users/donations' in request.path %}
+                                    class="nav-item active mr-3"
+                                {% else %}
+                                    class="nav-item mr-3"
+                                {% endif %}
+                            >
+                                    <a class="nav-link" href="{% url 'userdonations' %}">
+                                    Donations</a>
+                            </li>   
+                        {% endif %}
+                    {% endif %}
+                    <li class="nav-item mr-3">
+                        <a href="javascript:{document.getElementById('logout').submit()}"
+                        class="nav-link">
+                            <i class="fas fa-sign-out-alt"></i> Logout
+                        </a>
+                        <form action="{% url 'logout' %}" method="POST" id="logout">
+                            {% csrf_token %}
+                            <input type="hidden">   
+                        </form>
+                    </li>
+                {% else %}    
+                    <li 
+                    {% if 'users' in request.path %}
+                            class="nav-item active mr-3"
+                        {% else %}
+                            class="nav-item mr-3"
+                        {% endif %}
+                    >
+                            <a class="nav-link" href="{% url 'userlogin' %}">
+                            <i class="fas fa-user-plus"></i> User Sign In</a>
+                    </li>
+                    <li 
+                    {% if 'ngos' in request.path %}
+                        class="nav-item active mr-3"
+                    {% else %}
+                        class="nav-item mr-3"
+                    {% endif %}
+                    >
+                        <a class="nav-link" href="{% url 'ngologin' %}">
+                            <i class="fas fa-sign-in-alt"></i>
 
-                        NGO Sign In</a>
-                </li>
+                            NGO Sign In</a>
+                    </li>
+                {% endif %}
             </ul>
         </div>
     </div>
