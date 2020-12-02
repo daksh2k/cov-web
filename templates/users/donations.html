@@ -1,5 +1,137 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block content %}
-<h1>User Donations</h1>
+
+<!-- Pending Donations -->
+<section class="container">
+  <div class="row showcase-pending-donations">
+    <div class="col-lg-12 text-center">
+      <br>
+      <h2 class="mb-4 mx-auto text-center">Pending Donations</h2>
+      <p>These donations made by you are yet to be confirmed by the NGO.</p>
+      <hr class="my-4">
+    </div>
+  </div>
+  <div class="container showcase-pending-donations">
+    <div class="row">
+      {% if pending_donations %}
+        {% for donation in pending_donations %}
+          <div class="col-md-6 col-lg-3 text-center">
+            <div class="card" id="donation-card">
+              <div class="card-body"><img id="donation-pic" src="{{ donation.photo.url }}">
+                <h4 class="card-title product-title">{{ donation.name }}</h4>
+                <hr>
+                <button class="btn btn-primary btn-donation-details" id="btn-details" type="button"><i
+                    class="fa fa-eye"></i><a id="btn-donation-details" href="{% url 'viewdonation' donation.id %}">View Details</a></button>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      {% else %}
+        <div class="col-lg-12 text-center">
+          <h4>You have No Pending Donations</h4>
+        </div>
+      {% endif %}
+      <!-- <div class="col-md-6 col-lg-3 text-center">
+        <div class="card" id="donation-card">
+          <div class="card-body"><img id="donation-pic" src="assets/img/equipments/surgicalmask.jpg">
+            <h4 class="card-title product-title">Surgical Mask</h4>
+            <hr>
+            <button class="btn btn-primary btn-donation-details" id="btn-details" type="button"><i
+                class="fa fa-eye"></i> View Details</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3 text-center">
+        <div class="card" id="donation-card">
+          <div class="card-body"><img id="donation-pic" src="assets/img/equipments/plasticfaceshield.jpg">
+            <h4 class="card-title product-title">Plastic Face Shield</h4>
+            <hr>
+            <button class="btn btn-primary btn-donation-details" id="btn-details" type="button"><i
+                class="fa fa-eye"></i> View Details</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3 text-center">
+        <div class="card" id="donation-card">
+          <div class="card-body"><img id="donation-pic" src="assets/img/equipments/n95mask.jpg">
+            <h4 class="card-title product-title">N95 Mask</h4>
+            <hr>
+            <button class="btn btn-primary btn-donation-details" id="btn-details" type="button"><i
+                class="fa fa-eye"></i> View Details</button>
+          </div>
+        </div>
+      </div> -->
+    </div>
+  </div>
+</section>
+
+
+<!-- Donation History -->
+<section class="container">
+  <div class="row donation-history">
+    <div class="col-lg-12 text-center">
+      <br>
+      <hr class="my-4">
+      <hr class="my-4">
+      <h2 class="mb-4 mx-auto text-center">Donation History</h2>
+      <p>These donations made by you are successfully completed.</p>
+      <hr class="my-4">
+    </div>
+  </div>
+  <div class="container donation-history">
+    <div class="row">
+      {% if completed_donations %}
+        {% for donation in completed_donations %}
+          <div class="col-md-6 col-lg-3 text-center">
+            <div class="card" id="donation-history-card">
+              <div class="card-body"><img id="donation-pic" src="{{ donation.photo.url }}">
+                <h4 class="card-title product-title">{{ donation.name }}</h4>
+                <hr>
+                <button class="btn btn-primary btn-donation-details" id="btn-details" type="button"><i
+                    class="fa fa-eye"></i><a id="btn-donation-details" href="{% url 'viewdonation' donation.id %}">View Details</a></button>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      {% else %}
+        <div class="col-lg-12 text-center">
+          <h4>You are No Completed Donations</h4>
+        </div>
+      {% endif %}
+      <!-- <div class="col-md-6 col-lg-3 text-center">
+        <div class="card" id="donation-history-card">
+          <div class="card-body"><img id="donation-pic" src="assets/img/equipments/surgicalmask.jpg">
+            <h4 class="card-title product-title">Surgical Mask</h4>
+            <hr>
+            <button class="btn btn-primary btn-donation-details" id="btn-details" type="button"><i
+                class="fa fa-eye"></i> View Details</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3 text-center">
+        <div class="card" id="donation-history-card">
+          <div class="card-body"><img id="donation-pic" src="assets/img/equipments/plasticfaceshield.jpg">
+            <h4 class="card-title product-title">Plastic Face Shield</h4>
+            <hr>
+            <button class="btn btn-primary btn-donation-details" id="btn-details" type="button"><i
+                class="fa fa-eye"></i> View Details</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-3 text-center">
+        <div class="card" id="donation-history-card">
+          <div class="card-body"><img id="donation-pic" src="assets/img/equipments/n95mask.jpg">
+            <h4 class="card-title product-title">N95 Mask</h4>
+            <hr>
+            <button class="btn btn-primary btn-donation-details" id="btn-details" type="button"><i
+                class="fa fa-eye"></i> View Details</button>
+          </div>
+        </div>
+      </div> -->
+    </div>
+    <hr class="my-4">
+  </div>
+</section>
+
 {% endblock %}

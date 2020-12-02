@@ -1,7 +1,11 @@
 from django.shortcuts import render, redirect
+from django.views.generic import View
 from django.contrib import messages, auth
 from django.contrib.auth.models import User
 from users.models import Users
+from requirement.models import Requirement
+from donation.models import Donation
+from .forms import DonationForm
 
 def login(request):
     if request.method == 'POST':
@@ -61,8 +65,81 @@ def logout(request):
         messages.success(request, 'You are now logged out')
         return redirect('index')
 
-def dashboard(request):
-    return render(request, 'users/dashboard.html')
+def dashboard(request):    
+
+    requirements = Requirement.objects.order_by('name').filter(is_satisfied=False)
+    context = {
+        'requirements': requirements
+    }
+    return render(request, 'users/dashboard.html', context)
+
+def viewrequirement(request, requirement_id):
+    viewed_requirement = Requirement.objects.get(id = requirement_id)
+    context = {
+        'viewed_requirement': viewed_requirement
+    }
+    return render(request, 'users/viewrequirement.html', context)
+
+def donate(request, requirement_id):
+    # # if request.method != 'POST':
+    # if requirement_id != 0:
+    requirement = Requirement.objects.get(id = requirement_id)
+    # print(requirement.ngos.name)
+    # initial_dict = { 
+    #     "ngos" : requirement.ngos
+    # } 
+
+    form = DonationForm(request.POST, request.FILES)
+    if form.is_valid():
+        instance = form.save(commit=False)
+        instance.users = request.user.users
+        # instance.ngos = requirement.ngos
+        instance.save()
+        form = DonationForm()
+        # return redirect('userdashboard')
+
+    context = {
+        'form': form
+    }
+    return render(request, 'users/donate.html', context)
+
+class DonateView(View):
+    
+    def get(self, request, **kwargs):
+        request.session['myid'] = self.kwargs['requirement_id']
+        form = DonationForm()
+        context = {
+        'form': form
+        }
+        return render(request, 'users/donate.html', context)
+    
+    def post(self, request, **kwargs):
+        requirement = Requirement.objects.get(id = request.session['myid'])
+        form = DonationForm(request.POST, request.FILES)
+        if form.is_valid():
+            instance = form.save(commit=False)
+            instance.users = request.user.users
+            instance.ngos = requirement.ngos
+            instance.save()
+            messages.success(request, 'Equipment Donated')
+
+        # context = {
+        # 'form': form
+        # }
+        return redirect('userdashboard')
 
 def donations(request):
-    return render(request, 'users/donations.html')    
+    pending_donations = Donation.objects.order_by('name').filter(users=request.user.users ,is_completed=False)
+    completed_donations = Donation.objects.order_by('name').filter(users=request.user.users ,is_completed=True)
+    context = {
+        'completed_donations': completed_donations,
+        'pending_donations': pending_donations
+    }
+    return render(request, 'users/donations.html', context)    
+
+def viewdonation(request, donation_id):
+    viewed_donation = Donation.objects.get(id = donation_id)
+    context = {
+        'viewed_donation': viewed_donation
+    }
+    return render(request, 'users/viewdonation.html', context)

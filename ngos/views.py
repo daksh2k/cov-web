@@ -3,6 +3,8 @@ from django.contrib import messages, auth
 from django.contrib.auth.models import User
 from ngos.models import Ngos
 from requirement.models import Requirement
+from donation.models import Donation
+from .forms import RequirementForm
 
 
 def login(request):
@@ -76,15 +78,63 @@ def logout(request):
         return redirect('index')
 
 def dashboard(request):
-    return render(request, 'ngos/dashboard.html')
+    current_donation = Donation.objects.order_by('name').filter(ngos=request.user.ngos ,is_completed=False)
+    donation_history = Donation.objects.order_by('name').filter(ngos=request.user.ngos ,is_completed=True)
+    context = {
+        'current_donation': current_donation,
+        'donation_history': donation_history
+    }
+    return render(request, 'ngos/dashboard.html', context)
 
 def requirements(request):
-    if request.method == 'POST':
-        name = request.POST['name']
-        quantity = request.POST['quantity']
-        description = request.POST['description']
-        photo = request.POST['photo']
-        
+
+    form = RequirementForm(request.POST, request.FILES )
+    if form.is_valid():
+        instance = form.save(commit=False)
+        instance.ngos = request.user.ngos
+        instance.save()
+        form = RequirementForm()
 
 
-    return render(request, 'ngos/requirements.html')    
+    # context = {
+    #     'form': form
+    # }
+
+    # if request.method == 'POST':
+    #     name = request.POST['name']
+    #     quantity = request.POST['quantity']
+    #     description = request.POST['description']
+    #     photo = request.FILES['photomain']
+    #     ngo = request.user.ngos
+
+    #     req = Requirement(ngos=ngo, name=name, quantity=quantity, description=description, photo=photo, is_satisfied=False)
+    #     req.save()
+    #     messages.success(request, 'The Requirement is added')
+    #     return redirect('ngorequirements')
+
+    # else:
+        # requirements = Requirement.objects.all()
+    requirements = Requirement.objects.order_by('name').filter(ngos=request.user.ngos, is_satisfied=False)
+    context = {
+        'requirements': requirements,
+        'form': form
+    }
+
+    return render(request, 'ngos/requirements.html', context)    
+
+
+def removerequirements(request, requirement_id):
+    Requirement.objects.filter(id=requirement_id).delete()
+    return redirect('ngorequirements')
+
+def viewdonationngo(request, donation_id):
+    viewed_donation = Donation.objects.get(id = donation_id)
+    context = {
+        'viewed_donation': viewed_donation
+    }
+    return render(request, 'ngos/viewdonation.html', context)
+
+def acceptdonation(request, donation_id):
+
+    Donation.objects.filter(id = donation_id).update(is_completed = True)
+    return redirect('ngodashboard')
