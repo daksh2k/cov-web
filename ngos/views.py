@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages, auth
 from django.contrib.auth.models import User
+from django.views.generic import View
 from ngos.models import Ngos
 from requirement.models import Requirement
 from donation.models import Donation
@@ -138,3 +139,25 @@ def acceptdonation(request, donation_id):
 
     Donation.objects.filter(id = donation_id).update(is_completed = True)
     return redirect('ngodashboard')
+
+class EditRequirementView(View):
+    def get(self, request, **kwargs):
+        request.session['myid'] = self.kwargs['requirement_id']
+        requirement = Requirement.objects.get(id = self.kwargs['requirement_id'])
+        form = RequirementForm(instance=requirement)
+        context = {
+        'form': form
+        }
+        return render(request, 'ngos/editrequirement.html', context)
+    
+    def post(self, request, **kwargs):
+        requirement = Requirement.objects.get(id = request.session['myid'])
+        form = RequirementForm(request.POST, request.FILES, instance=requirement)
+        if form.is_valid():
+            instance = form.save(commit=False)
+            instance.ngos = request.user.ngos
+            instance.save()
+            messages.success(request, 'Equipment Edited')
+        
+        return redirect('ngorequirements')
+

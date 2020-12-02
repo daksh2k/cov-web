@@ -14,4 +14,6 @@ urlpatterns = [
     path('requirements/<int:requirement_id>', views.removerequirements, name='removerequirements'),
     path('viewdonation/<int:donation_id>', views.viewdonationngo, name='viewdonationngo'),
     path('acceptdonation/<int:donation_id>', views.acceptdonation, name='acceptdonation'),
+    path('editrequirement/<int:requirement_id>', views.EditRequirementView.as_view(), name='editrequirement'),
+
 ]

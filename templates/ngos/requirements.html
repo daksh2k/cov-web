@@ -34,9 +34,8 @@
                 {% endif %}
                 <h4 class="card-title product-title">{{ requirement.name }}</h4>
                 <hr>
-                <button class="btn btn-primary" id="btn-accept" type="button"><i class="fa fa-edit"></i> Edit
-                  Details</button>
-                <button class="btn btn-primary" id="btn-details" type="button"><i class="fa fa-trash" ></i> <a href="{% url 'removerequirements' requirement.id %}">RemoveRequirement</a>
+                <button class="btn btn-primary" id="btn-accept" type="button"><i class="fa fa-edit"></i> <a id="btn-edit-requirement-details" href="{% url 'editrequirement' requirement.id %}">Edit Details</a></button>
+                <button class="btn btn-primary" id="btn-details" type="button"><i class="fa fa-trash" ></i> <a href="{% url 'removerequirements' requirement.id %}">Remove Requirement</a>
                 </button>
               </div>
             </div>
