@@ -18,7 +18,10 @@
           <h4 class="card-title product-title text-center"><strong>{{ viewed_donation.name }} </strong></h4>
           <hr>
           <div>
-            <h5><strong>Donated By: </strong>{{ viewed_donation.users.first_name }}</h5>
+            <h5><strong>Donated By: </strong>{{ viewed_donation.users.first_name }} {{ viewed_donation.users.last_name }}</h5>
+          </div>
+          <div>
+            <h5><strong>Contact No.: </strong>{{ viewed_donation.users.phone }}</h5>
           </div>
           <div>
             <h5><strong>Quantity: </strong>{{ viewed_donation.quantity }}</h5>

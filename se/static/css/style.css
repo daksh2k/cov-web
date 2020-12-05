@@ -110,9 +110,17 @@ img {
   display: block;
 }
 
-#btn-details {
-  margin: 4%;
+.header-para {
+  color: #42a5ff !important;
 }
+
+.btn-primary {
+  margin-bottom: 7px;
+}
+
+/* #btn-details {
+  margin: 4%;
+} */
 
 #btn-requirement-details {
   margin: 4%;

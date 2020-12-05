@@ -11,6 +11,7 @@
           <div class="col-lg-12 text-center">
               <br>
               <h2 class="mb-4 mx-auto text-center">Current Donations</h2>
+              <h6 class="mb-4 mx-auto text-center">Here are all the donations made to your NGO yet to be accepted by you. </h6>
               <hr class="my-4">
           </div>
       </div>
@@ -69,6 +70,7 @@
           <div class="col-lg-12 text-center">
               <br><hr class="my-4"><hr class="my-4">
               <h2 class="mb-4 mx-auto text-center">Donation History</h2>
+              <h6 class="mb-4 mx-auto text-center">Here are all the donations successfully made to your NGO. </h6>
               <hr class="my-4">
           </div>
       </div>
@@ -80,7 +82,7 @@
                     <div class="card" id="donation-history-card">
                         <div class="card-body"><img id="donation-pic" src="{{ donation.photo.url }}">
                             <h4 class="card-title product-title">{{ donation.name }}</h4><hr>
-                            <button class="btn btn-primary" id="btn-details" type="button"><i class="fa fa-eye"></i><a id="btn-donation-details" href="{% url 'viewdonationngo' donation.id %}">View Details</a></button>
+                            <button class="btn btn-primary" id="btn-details" type="button"><i class="fa fa-eye"></i><a id="btn-donation-details" href="{% url 'viewdonationngo' donation.id %}"> View Details</a></button>
                         </div>
                     </div>
                 </div>
