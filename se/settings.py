@@ -86,14 +86,8 @@ DATABASES = {
 'default':{
    'ENGINE': 'djongo',
    'NAME' : 'test',
-#    'CLIENT': {
-   'HOST': 'mongodb+srv://admin_daksh:y5@-jXiNCS!zNB6@test.jz2wo.mongodb.net/test?retryWrites=true&w=majority'
-#    }
-}
-    # 'default': {
-    #     'ENGINE': 'djongo',
-    #     'NAME': 'cweb',
-    # }
+   'HOST': 'mongodb+srv://admin_daksh:y5@-jXiNCS!zNB6@test.jz2wo.mongodb.net/test?retryWrites=true&w=majority',
+  }
 }
 
 
@@ -140,17 +134,7 @@ STATICFILES_DIRS = [
 ]
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-# BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-# # Static files (CSS, JavaScript, Images)
-# # https://docs.djangoproject.com/en/1.9/howto/static-files/
-# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-# STATIC_URL = '/static/'
-
-# # Extra places for collectstatic to find static files.
-# STATICFILES_DIRS = (
-#     os.path.join(BASE_DIR, 'se/static'),
-# )
 
 # Media Folder Settings
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
@@ -162,9 +146,9 @@ MESSAGE_TAGS = {
     messages.ERROR: 'danger'
 }
 
-import dj_database_url 
-prod_db  =  dj_database_url.config(conn_max_age=500)
-DATABASES['default'].update(prod_db)
+# import dj_database_url 
+# prod_db  =  dj_database_url.config(conn_max_age=500)
+# DATABASES['default'].update(prod_db)
 
 # Activate Django-Heroku.
 # django_heroku.settings(locals())
