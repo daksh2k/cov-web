@@ -15,7 +15,7 @@ import os
 from urllib.parse import quote
 import django_heroku
 from pymongo.mongo_client import MongoClient
-import urllib
+import urllib.parse
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -84,9 +84,10 @@ WSGI_APPLICATION = 'se.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
-
-data_uri = "mongodb+srv://" + urllib.quote("admin_daksh")+":"+ urllib.quote("y5@-jXiNCS!zNB6")+ "@test.jz2wo.mongodb.net/"
-MongoClient.HOST = data_uri
+username = urllib.parse.quote_plus('admin_daksh')
+password = urllib.parse.quote_plus('y5@-jXiNCS!zNB6')
+# data_uri = "mongodb+srv://" + urllib.parse.quote_plus("admin_daksh")+":"+ urllib.parse.quote_plus("y5@-jXiNCS!zNB6")+ "@test.jz2wo.mongodb.net/"
+MongoClient.HOST = "mongodb+srv://%s:%s@test.jz2wo.mongodb.net/"  % (username, password)
 DATABASES = {
 'default':{
    'ENGINE': 'djongo',
