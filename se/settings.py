@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 import os
+import django_heroku
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -26,7 +27,7 @@ SECRET_KEY = '70ug&_9qedtdacx1_nen%v!0_15_bmfg62qt8nq1@z&wv_=#c+'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['cov-web.herokuapp.com']
 
 
 # Application definition
@@ -47,6 +48,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -81,13 +83,17 @@ WSGI_APPLICATION = 'se.wsgi.application'
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'sedb',
-        'USER': 'postgres',
-        'PASSWORD': 'Priya&*=1',
-        'HOST': 'localhost'
-    }
+'default':{
+   'ENGINE': 'djongo',
+   'NAME' : 'test',
+#    'CLIENT': {
+   'HOST': 'mongodb+srv://admin_daksh:y5@-jXiNCS!zNB6@test.jz2wo.mongodb.net/test?retryWrites=true&w=majority'
+#    }
+}
+    # 'default': {
+    #     'ENGINE': 'djongo',
+    #     'NAME': 'cweb',
+    # }
 }
 
 
@@ -142,3 +148,17 @@ from django.contrib.messages import constants as messages
 MESSAGE_TAGS = {
     messages.ERROR: 'danger'
 }
+
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/1.9/howto/static-files/
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_URL = '/static/'
+
+# Extra places for collectstatic to find static files.
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
+# Activate Django-Heroku.
+django_heroku.settings(locals())
