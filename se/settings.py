@@ -86,8 +86,12 @@ DATABASES = {
 'default':{
    'ENGINE': 'djongo',
    'NAME' : 'test',
-   'HOST': 'mongodb+srv://admin_daksh:y5@-jXiNCS!zNB6@test.jz2wo.mongodb.net/test?retryWrites=true&w=majority',
-  }
+   'CLIENT': {
+      'host': 'mongodb+srv://admin_daksh:y5@-jXiNCS!zNB6@test.jz2wo.mongodb.net/test?retryWrites=true&w=majority',
+      'port': 27017,
+    } 
+#    'HOST': 'mongodb+srv://admin_daksh:y5@-jXiNCS!zNB6@test.jz2wo.mongodb.net/test?retryWrites=true&w=majority',
+  },
 }
 
 
