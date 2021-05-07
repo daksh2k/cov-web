@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 from pathlib import Path
 import os
 import django_heroku
+from pymongo.mongo_client import MongoClient
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -81,15 +82,15 @@ WSGI_APPLICATION = 'se.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
-
+MongoClient.HOST = "mongodb+srv://admin_daksh:y5@-jXiNCS!zNB6@test.jz2wo.mongodb.net/"
 DATABASES = {
 'default':{
    'ENGINE': 'djongo',
    'NAME' : 'test',
-   'CLIENT': {
-      'host': 'mongodb+srv://admin_daksh:y5@-jXiNCS!zNB6@test.jz2wo.mongodb.net/test?retryWrites=true&w=majority',
-      'port': 27017,
-    } 
+#    'CLIENT': {
+#       'host': 'mongodb+srv://admin_daksh:y5@-jXiNCS!zNB6@test.jz2wo.mongodb.net/test?retryWrites=true&w=majority',
+#       'port': 27017,
+#     } 
 #    'HOST': 'mongodb+srv://admin_daksh:y5@-jXiNCS!zNB6@test.jz2wo.mongodb.net/test?retryWrites=true&w=majority',
   },
 }
