@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<section class="container">
+  <div class="col-lg-12 text-center">
+    <br>
+    <h2 class="mb-4 mx-auto text-center">Requirement Details</h2>
+    <hr class="my-4">
+  </div>
+  <hr>
+  <div class="container bg-light">
+    <div class="row bg-light">
+      <div class="col-md-5 mx-auto">
+        <div class="card-body">
+          <img id="donation-pic" src="{{ viewed_requirement.photo.url }}">
+          <hr>
+          <h4 class="card-title product-title text-center"><strong>{{ viewed_requirement.name }} </strong></h4>
+          <hr>
+          <div><h5><strong>Required By: </strong>{{ viewed_requirement.ngos.name }} NGO</h5></div>
+          <div><h5><strong>Quantity: </strong>{{ viewed_requirement.quantity }}</h5></div>
+          <div><h5><strong>Description: </strong>{{ viewed_requirement.description }}</h5></div>
+          <div><h5><strong>Contact No.: </strong>{{ viewed_requirement.ngos.phone }}</h5></div>
+          <div><h5><strong>Address: </strong>{{ viewed_requirement.ngos.address }} {{viewed_requirement.ngos.city}}-{{viewed_requirement.ngos.pincode}}</h5></div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <hr>
+</section>
+{% endblock %}

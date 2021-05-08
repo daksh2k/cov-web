@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<section>
+  <div class="container bg-light">
+    <hr>
+    <div class="row bg-light">
+      <div class="col-md-6 mx-auto">
+        <div class="card">
+          <div class="card-header bg-primary text-white">
+            <h4>
+              <i class="fas fa-user-plus"></i> Edit Requirement Details</h4>
+          </div>
+          <div class="card-body">
+            <form action="{% url 'editrequirement' 0 %}" method="POST" enctype="multipart/form-data">
+              {% csrf_token %}
+              {{ form.as_p }}
+              <input type="submit" value="Save" class="btn btn-secondary btn-block">
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr>
+  </div>
+</section>
+
+{% endblock %}

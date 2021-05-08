@@ -1,0 +1,124 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<!-- Alerts -->
+{% include 'partials/_alerts.html' %}
+<!-- Current Donations -->
+<section class="container">
+  <!-- <div class="container"> -->
+      <div class="row showcase-donations">
+          <div class="col-lg-12 text-center">
+              <br>
+              <h2 class="mb-4 mx-auto text-center">Current Donations</h2>
+              <h6 class="mb-4 mx-auto text-center">Here are all the donations made to your NGO yet to be accepted by you. </h6>
+              <hr class="my-4">
+          </div>
+      </div>
+  <!-- </div> -->
+  <div class="container showcase-donations">
+      <div class="row">
+        {% if current_donation %}
+            {% for donation in current_donation %}
+                <div class="col-md-6 col-lg-3 text-center">
+                    <div class="card" id="donation-card">
+                        <div class="card-body"><img id="donation-pic" src="{{ donation.photo.url }}">
+                            <h4 class="card-title product-title">{{ donation.name }}</h4><hr>
+                            <button class="btn btn-primary" id="btn-details" type="button"><i class="fa fa-eye"></i> <a id="btn-donation-details" href="{% url 'viewdonationngo' donation.id %}">View Details</a></button>
+                            <button class="btn btn-primary" id="btn-accept" type="button"><i class="fa fa-check"></i> <a id="btn-accept-donation" href="{% url 'acceptdonation' donation.id %}">Accept Donation</a></button></div>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <div class="col-lg-12 text-center">
+            <h4>There are No Current Donations</h4>
+            </div>
+        {% endif %}
+          <!-- <div class="col-md-6 col-lg-3 text-center">
+              <div class="card" id="donation-card">
+                  <div class="card-body"><img id="donation-pic" src="assets/img/equipments/surgicalmask.jpg">
+                      <h4 class="card-title product-title">Surgical Mask</h4><hr>
+                      <button class="btn btn-primary" id="btn-details" type="button"><i class="fa fa-eye"></i> View Details</button>
+                      <button class="btn btn-primary" id="btn-accept" type="button"><i class="fa fa-check"></i> Accept Donation</button></div>
+              </div>
+          </div>
+          <div class="col-md-6 col-lg-3 text-center">
+              <div class="card" id="donation-card">
+                  <div class="card-body"><img id="donation-pic" src="assets/img/equipments/plasticfaceshield.jpg">
+                      <h4 class="card-title product-title">Plastic Face Shield</h4><hr>
+                      <button class="btn btn-primary" id="btn-details" type="button"><i class="fa fa-eye"></i> View Details</button>
+                      <button class="btn btn-primary" id="btn-accept" type="button"><i class="fa fa-check"></i> Accept Donation</button></div>
+              </div>
+          </div>
+          <div class="col-md-6 col-lg-3 text-center">
+              <div class="card" id="donation-card">
+                  <div class="card-body"><img id="donation-pic" src="assets/img/equipments/n95mask.jpg">
+                      <h4 class="card-title product-title">N95 Mask</h4><hr>
+                      <button class="btn btn-primary" id="btn-details" type="button"><i class="fa fa-eye"></i> View Details</button>
+                      <button class="btn btn-primary" id="btn-accept" type="button"><i class="fa fa-check"></i> Accept Donation</button></div>
+              </div>
+          </div> -->
+      </div>
+  </div>
+</section>
+
+<br>
+
+<!-- Donation History -->
+<section class="container">
+      <div class="row donation-history">
+          <div class="col-lg-12 text-center">
+              <br><hr class="my-4"><hr class="my-4">
+              <h2 class="mb-4 mx-auto text-center">Donation History</h2>
+              <h6 class="mb-4 mx-auto text-center">Here are all the donations successfully made to your NGO. </h6>
+              <hr class="my-4">
+          </div>
+      </div>
+  <div class="container showcase-donations">
+      <div class="row">
+        {% if donation_history %}
+            {% for donation in donation_history %}
+                <div class="col-md-6 col-lg-3 text-center">
+                    <div class="card" id="donation-history-card">
+                        <div class="card-body"><img id="donation-pic" src="{{ donation.photo.url }}">
+                            <h4 class="card-title product-title">{{ donation.name }}</h4><hr>
+                            <button class="btn btn-primary" id="btn-details" type="button"><i class="fa fa-eye"></i><a id="btn-donation-details" href="{% url 'viewdonationngo' donation.id %}"> View Details</a></button>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <div class="col-lg-12 text-center">
+            <h4>There are No Successful Donations</h4>
+            </div>
+        {% endif %}
+          <!-- <div class="col-md-6 col-lg-3 text-center">
+              <div class="card" id="donation-card">
+                  <div class="card-body"><img id="donation-pic" src="assets/img/equipments/surgicalmask.jpg">
+                      <h4 class="card-title product-title">Surgical Mask</h4><hr>
+                      <button class="btn btn-primary" id="btn-details" type="button"><i class="fa fa-eye"></i> View Details</button>
+                  </div>
+              </div>
+          </div>
+          <div class="col-md-6 col-lg-3 text-center">
+              <div class="card" id="donation-card">
+                  <div class="card-body"><img id="donation-pic" src="assets/img/equipments/plasticfaceshield.jpg">
+                      <h4 class="card-title product-title">Plastic Face Shield</h4><hr>
+                      <button class="btn btn-primary" id="btn-details" type="button"><i class="fa fa-eye"></i> View Details</button>
+                  </div>
+              </div>
+          </div>
+          <div class="col-md-6 col-lg-3 text-center">
+              <div class="card" id="donation-card">
+                  <div class="card-body"><img id="donation-pic" src="assets/img/equipments/n95mask.jpg">
+                      <h4 class="card-title product-title">N95 Mask</h4><hr>
+                      <button class="btn btn-primary" id="btn-details" type="button"><i class="fa fa-eye"></i> View Details</button>
+                  </div>
+              </div>
+          </div> -->
+      </div>
+      <hr class="my-4">
+  </div>
+</section>
+
+{% endblock %}
