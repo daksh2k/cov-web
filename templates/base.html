@@ -16,6 +16,23 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <!-- Modal -->
     <link rel="stylesheet" href="{% static 'css/modal.css' %}">
+    <script>
+    const url = "https://cov-web.herokuapp.com/static/img/logofinal1.png"
+    fixBrokenImages = function( url ){
+    var img = document.getElementsByTagName('img');
+    var i=0, l=img.length;
+    for(;i<l;i++){
+        var t = img[i];
+        if(t.naturalWidth === 0){
+            //this image is broken
+            t.src = url;
+        }
+    }
+}
+window.onload = function() {
+    fixBrokenImages("https://cov-web.herokuapp.com/static/img/logofinal1.png");
+ }
+    </script>
 </head>
 
 <body>
