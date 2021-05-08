@@ -1,7 +1,5 @@
-<<<<<<< HEAD
 # Byte-compiled / optimized / DLL files
 __pycache__/
-=======
 
 # Created by https://www.toptal.com/developers/gitignore/api/django
 # Edit at https://www.toptal.com/developers/gitignore?templates=django
@@ -24,7 +22,6 @@ venv
 
 ### Django.Python Stack ###
 # Byte-compiled / optimized / DLL files
->>>>>>> heroku/master
 *.py[cod]
 *$py.class
 
