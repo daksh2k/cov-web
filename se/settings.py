@@ -25,10 +25,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '70ug&_9qedtdacx1_nen%v!0_15_bmfg62qt8nq1@z&wv_=#c+'
+SECRET_KEY = os.environ.get("django_secret")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['cov-web.herokuapp.com']
 
@@ -84,22 +84,16 @@ WSGI_APPLICATION = 'se.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
-username = urllib.parse.quote_plus('admin_daksh')
-password = urllib.parse.quote_plus('y5@-jXiNCS!zNB6')
-# data_uri = "mongodb+srv://" + urllib.parse.quote_plus("admin_daksh")+":"+ urllib.parse.quote_plus("y5@-jXiNCS!zNB6")+ "@test.jz2wo.mongodb.net/"
+username = urllib.parse.quote_plus(os.environ.get("db_username"))
+password = urllib.parse.quote_plus(os.environ.get("db_password"))
+
 MongoClient.HOST = "mongodb+srv://%s:%s@test.jz2wo.mongodb.net/"  % (username, password)
 DATABASES = {
 'default':{
    'ENGINE': 'djongo',
    'NAME' : 'test',
-#    'CLIENT': {
-#       'host': 'mongodb+srv://admin_daksh:y5@-jXiNCS!zNB6@test.jz2wo.mongodb.net/test?retryWrites=true&w=majority',
-#       'port': 27017,
-#     } 
-#    'HOST': 'mongodb+srv://admin_daksh:y5@-jXiNCS!zNB6@test.jz2wo.mongodb.net/test?retryWrites=true&w=majority',
   },
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
