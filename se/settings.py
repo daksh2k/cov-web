@@ -26,11 +26,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get("django_secret")
-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['cov-web.herokuapp.com']
+ALLOWED_HOSTS = ['cov-web.herokuapp.com','127.0.0.1']
 
 
 # Application definition
@@ -150,10 +149,5 @@ MESSAGE_TAGS = {
     messages.ERROR: 'danger'
 }
 
-# import dj_database_url 
-# prod_db  =  dj_database_url.config(conn_max_age=500)
-# DATABASES['default'].update(prod_db)
-
 # Activate Django-Heroku.
-# django_heroku.settings(locals())
 django_heroku.settings(locals(), databases=False)
