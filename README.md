@@ -3,7 +3,7 @@
 [![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/daksh2k/cov-web/blob/master/LICENSE)
 [![GitHub last commit](https://img.shields.io/github/last-commit/daksh2k/cov-web)](https://github.com/daksh2k/cov-web)
 [![GitHub issues](https://img.shields.io/github/issues/daksh2k/cov-web)](https://github.com/daksh2k/cov-web/issues)
-[![Total Lines Of Code](https://tokei.rs/b1/github/daksh2k/cov-web)](https://github.com/miraclx/freyr-js)
+[![Total Lines Of Code](https://tokei.rs/b1/github/daksh2k/cov-web)](https://github.com/daksh2k/cov-web)
 
 A platform where any NGO can Sign Up and create the requirements for the medical equipment required to serve the people in need.
 
